@@ -9,17 +9,19 @@ if image is None:
     print("Image file could not be opened")
     exit(-1)
 
-# Check the number of channels to determine if the image is RGB or Grayscale
-is_gray = (len(image.shape) == 2)  # Single channel indicates grayscale
 
 # Get the image dimensions
 height, width = image.shape[:2]
 
 # Define the grid size (distance between grid lines)
-grid_size = 50  # Distance between lines (in pixels)
+grid_size = 20  # Distance between lines (in pixels)
 
-# Define grid color based on image type
-grid_color = (200, 200, 200) if not is_gray else (255, 255, 255)  # Gray for RGB, White for grayscale
+if len (image.shape) > 2:
+    grid_color = (128, 128, 128)
+    print ("The loaded image is NOT a GRAY-LEVEL image !")
+else:
+    grid_color = (255, 255, 255)
+    print ("The loaded image is a GRAY-LEVEL image !")
 
 # Draw horizontal lines
 for y in range(0, height, grid_size):
