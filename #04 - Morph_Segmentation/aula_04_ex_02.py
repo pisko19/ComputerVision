@@ -24,18 +24,20 @@ _, binary_image = cv2.threshold(image, 90, 255, cv2.THRESH_BINARY)
 inverted_image = cv2.bitwise_not(binary_image)
 
 kernel = circular_kernel(11)
+square_kernel = np.ones((11,11),np.uint8)
 
 erosion = cv2.erode(image,kernel,iterations=1)
 erosion2 = cv2.erode(image,kernel,iterations=2)
 erosion4 = cv2.erode(image,kernel,iterations=4)
 erosion10 = cv2.erode(image,kernel,iterations=10)
+square_erosion = cv2.erode(image,square_kernel,iterations = 1)
 # Show the image with the grid
 cv2.imshow("Original Image",image)
 cv2.imshow("Image with erosion", erosion)
 cv2.imshow("Image with erosion2", erosion2)
 cv2.imshow("Image with erosion4", erosion4)
 cv2.imshow("Image with erosion10", erosion10)
-
+cv2.imshow("Image with square erosion", square_erosion)
 
 # Wait for a key press and close windows
 cv2.waitKey(0)

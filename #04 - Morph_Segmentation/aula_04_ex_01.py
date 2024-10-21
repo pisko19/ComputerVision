@@ -24,15 +24,16 @@ _, binary_image = cv2.threshold(image, 120, 255, cv2.THRESH_BINARY)
 inverted_image = cv2.bitwise_not(binary_image)
 
 kernel = circular_kernel(11)
+square_kernel = np.ones((11,1),np.uint8)
 
 dilatation = cv2.dilate(inverted_image,kernel,iterations=1)
-dilatation2 = cv2.dilate(inverted_image,kernel,iterations=2)
 dilatation4 = cv2.dilate(inverted_image,kernel,iterations=4)
+dilatation_square = cv2.dilate(inverted_image,square_kernel,iterations=1)
 
 # Show the image with the grid
 cv2.imshow("Original Image",inverted_image)
 cv2.imshow("Image with dilatation", dilatation)
-cv2.imshow("Image with dilatation2", dilatation2)
+cv2.imshow("Image with square dilatation", dilatation_square)
 cv2.imshow("Image with dilatation4", dilatation4)
 # Wait for a key press and close windows
 cv2.waitKey(0)
