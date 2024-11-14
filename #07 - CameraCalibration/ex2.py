@@ -39,7 +39,7 @@ def FindAndDisplayChessboard(img):
 
 
 # Lê a imagem e vê se dá erro 
-img = cv2.imread("../images/left02.jpg")  # Load the original image
+img = cv2.imread("../images/left11.jpg")  # Load the original image
 if img is None:
     print("Error: Image not found.")
     exit()

@@ -50,11 +50,11 @@ capture = cv2.VideoCapture(0)  # Use 0 para a câmera padrão
 images_count = 0
 
 
-print("Move o tabuleiro de xadrez para a câmera. Pressione 'c' para capturar uma imagem.")
+print("Move o tabuleiro de xadrez para a câmera. Pressione 'p' para capturar uma imagem.")
 
 
 
-while images_count < 3:
+while images_count < 5:
     ret, img = capture.read()  # Lê a imagem da câmera
     if not ret:
         print("Erro ao capturar imagem.")
@@ -64,7 +64,7 @@ while images_count < 3:
     cv2.imshow('Camera', img)  # Mostra a imagem capturada
 
     key = cv2.waitKey(1)
-    if key == ord('c'):  # Se 'c' for pressionado, captura a imagem
+    if key == ord('p'):  # Se 'c' for pressionado, captura a imagem
         ret, corners = FindAndDisplayChessboard(img)
         if ret:
             objpoints.append(objp)
