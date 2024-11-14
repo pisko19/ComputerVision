@@ -25,7 +25,7 @@ def printImageFeatures(image):
 
 # Read the image from argv
 #image = cv2.imread( sys.argv[1] , cv2.IMREAD_GRAYSCALE );
-image = cv2.imread( "./lena.jpg", cv2.IMREAD_GRAYSCALE );
+image = cv2.imread( "../images/lena.jpg", cv2.IMREAD_GRAYSCALE );
 
 if  np.shape(image) == ():
 	# Failed Reading
