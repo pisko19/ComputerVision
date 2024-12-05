@@ -33,7 +33,7 @@ mesh_cropped = pcl.crop(bbox_cropped)
 You might also use the left image to add texture information to each 3D point, for these you can specify the color of the point cloud with the pcl.colors, specifying the color as an rgb value between [0,1]
 
 ##	9.2 - PCD (point cloud data) 3D format 
-Modify the source code viewcloud.cpp to read and visualize the two provided kinect images `office1.pcd` and `office2.pcd` The Point Cloud Data file format (PCD) used is the 3D file format from PCL and can be written and read directly using the PCL functions `o3d.io.read_point_cloud` and `o3d.io.write_point_cloud`. 
+Modify the source code viewcloud.py to read and visualize the two provided kinect images `office1.pcd` and `office2.pcd` The Point Cloud Data file format (PCD) used is the 3D file format from PCL and can be written and read directly using the PCL functions `o3d.io.read_point_cloud` and `o3d.io.write_point_cloud`. 
 Kinect sensor returns NaN values (when no measure was returend for a given pixel) that may cause problems in the processing. To remove NaN values you need to use the function `remove_non_finite_points`.
 
 ## Note:
@@ -56,9 +56,8 @@ The evaluated transform can be recovered with the function as the `registration_
 
 Merge the two aligned pointclouds and save the obtain pointcloud to a new file `merged_offices.ply` (use the + operator).
 
-## Optional
-Try the previous code to align the images Lab_0.24_1.pcd and Lab_0.24_2.pcd acquired with a kinect azure sensor. Is the ICP providing a good estimation of the transform? Why?
-Adapt the following code to pick at least 3 points between the two point clouds and feed the ICP algorithm with an initial transform in order to achieve a good registration.
+## Note
+If the two depth images are acquired from significantly different viewpoints, the ICP might not provide a good estimation of the transform. in this case it is possible to pick at least 3 points between the two point clouds and feed the ICP algorithm with an initial transform in order to achieve a good registration. the following code shows how to perform point selection in pointclouds.
 ```html
 def pick_points(pcd):
     print("")
@@ -83,4 +82,5 @@ corr[:, 1] = picked_id_target
 ```
 
 ## 9.4 - Plane segmentation in Kinect image
-Use the following code [Plane Segmentation](https://www.open3d.org/docs/release/tutorial/geometry/pointcloud.html#Plane-segmentation) to detect and crop the main plane from the previous point cloud using the segment_plane function. Modify the segment_plane value to see the results. modify the code to make it iterative to detect the 5 main planes in the scene. 
+Use the following code [Plane Segmentation](https://www.open3d.org/docs/release/tutorial/geometry/pointcloud.html#Plane-segmentation) to detect and crop the main plane from the previous point cloud using the segment_plane function. Modify the segment_plane value to see the results. modify the code to make it iterative to detect the 3 main planes in the scene. 
+
